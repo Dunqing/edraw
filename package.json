@@ -6,7 +6,7 @@
     "dev": "pnpm -r --parallel dev",
     "docs:start": "pnpm --filter @edraw/docs run start",
     "docs:build": "pnpm --filter @edraw/docs run build",
-    "release": "bumpp package.json packages/*/package.json --tag --commit --push && pnpm -r publish --access public",
+    "release": "bumpp package.json packages/*/package.json --no-verify --tag --commit --push && pnpm -r publish --access public",
     "prepare": "husky install .config/husky"
   },
   "keywords": [],
