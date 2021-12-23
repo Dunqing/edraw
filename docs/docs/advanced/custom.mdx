@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+---
+
+
+# 自定义绘制
+
+:::note
+
+配置使用请指定type="custom"
+
+当你想用配置生成海报,但不能完全实现你的需求时可使用此类型, 获取到edraw实例自行绘做你想做, 这应该能满足你的需求了吧?
+::: 
+
+### 支持的参数
+
+```ts
+  export interface DrawCustomOptions {
+    /**
+    * 自定义绘制，能拿到draw实例
+    */
+    type: 'custom';
+    /**
+    * 自定义绘制，可以使用this
+    */
+    draw: (this: Draw) => Promise<any>;
+  }
+```
+
+### 基本用法
+
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 700,
+        height: 200,
+        el: "#edraw-canvas1",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'custom',
+          draw()  {
+            this.drawText({
+              text: '这是在custom中绘制的文本',
+              x: 0,
+              y: 0,
+            })
+          }
+        },
+      ]
+      
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas1" />
+  }
+```

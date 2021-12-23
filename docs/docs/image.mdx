@@ -1,0 +1,249 @@
+---
+sidebar_position: 5
+---
+
+
+# 绘制图片
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+:::note
+
+配置使用请指定type="image", 函数调用使用drawImage
+
+::: 
+
+### 支持的参数
+
+```ts
+export interface LayoutOptions {
+  /**
+   * 距离左边距离
+   */
+  x: number;
+  /**
+   * 距离顶部距离
+   */
+  y: number;
+  /**
+   * 宽度
+   */
+  width?: number;
+  /**
+   * 宽度
+   */
+  height?: number;
+  /**
+   * 内边距
+   * @default 0
+   * all
+   * [horizontal, vertical]
+   * [top, right, bottom, left]
+   */
+  padding?: number | [number, number] | [number, number, number, number];
+  radius?: number | `${number}%`;
+
+  /**
+   * drawText 使用
+   * 是否外层包裹一个Rect
+   * @default false
+   */
+  wrap?: false | Omit<DrawOptions, 'x' | 'y'>;
+  /**
+   * 背景色
+   */
+  backgroundColor?: string;
+
+  // /**
+  //  * restore 之前执行，可自行加绘
+  //  */
+  // afterDraw?: () => void;
+
+  /**
+   * 校验，false，则不绘制
+   */
+  if?: boolean | (() => boolean);
+
+  /**
+   *
+   */
+
+  /**
+   * 是否隔离绘制
+   *
+   * @default true
+   * @description
+   * 开始前执行save | 结束后执行restore
+   */
+  isolation?: boolean;
+  /**
+   * 边框线
+   */
+  border?: LayoutBorderOptions;
+}
+
+export interface DrawImageOptions extends LayoutOptions {
+  type: 'image';
+  url: string;
+}
+```
+
+### 基本用法
+
+<Tabs>
+  <TabItem value="options" label="配置式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 192 * 2,
+        height: 108 * 2,
+        el: "#edraw-canvas1",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'image',
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+        },
+      ]
+      
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas1" />
+  }
+```
+
+  </TabItem>
+  <TabItem value="function" label="函数式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+      const eDrawInstance = new EDraw({
+        width: 300,
+        height: 50,
+        dpr: 1,
+        el: "#edraw-canvas1-1",
+      })
+    
+      const options = {
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+        },
+      
+      eDrawInstance.drawRect(options)
+    })
+
+      
+    return <canvas id="edraw-canvas1-1" />
+  }
+```
+
+  </TabItem>
+</Tabs>
+
+
+
+
+### 在圆里画图片
+
+<Tabs>
+<TabItem value="options" label="配置式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 192*4,
+        height: 108*4,
+        dpr: 1,
+        el: "#edraw-canvas2",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'rect',
+          width: 200,
+          height: 200,
+          x: 100,
+          y: 10,
+          radius: '50%',
+          isolation: false,
+        },
+        {
+          type: 'image',
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+        }
+      ]
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas2" />
+  }
+```
+
+</TabItem>
+
+<TabItem value="function" label="函数式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 192*4,
+        height: 108*4,
+        el: "#edraw-canvas2-2",
+      })
+    
+      const options = {
+        width: 200,
+        height: 200,
+        x: 100,
+        y: 10,
+        radius: '50%',
+        isolation: false,
+      }
+
+      const imageOptions = {
+          type: 'image',
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+        }
+      
+      eDrawInstance.drawRect(options)
+      eDrawInstance.drawImage(imageOptions)
+    })
+
+    return <canvas id="edraw-canvas2-2" />
+  }
+```
+
+</TabItem>
+</Tabs>

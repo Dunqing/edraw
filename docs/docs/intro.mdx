@@ -1,0 +1,80 @@
+---
+sidebar_position: 1
+---
+
+# Edraw 
+
+**Easy Draw**
+
+### 介绍
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+> 配置式绘制海报
+
+- 轻量无依赖
+- 无框架限制
+- 丰富的类型支持
+- 友好的API
+- 高度自定义
+
+### 添加到项目
+
+<Tabs>
+<TabItem label="npm" value="npm">
+
+```shell
+npm install edraw
+```
+
+</TabItem>
+<TabItem label="yarn" value="yarn">
+
+```shell
+yarn add edraw
+```
+
+</TabItem>
+<TabItem label="pnpm" value="pnpm">
+
+```shell
+pnpm add edraw
+```
+
+</TabItem>
+</Tabs>
+
+
+### 使用
+
+```typescript live
+
+function () {
+
+  setTimeout(() => {
+
+    const eDrawInstance = new EDraw({
+      width: 300,
+      height: 50,
+      dpr: 1,
+      el: "#edraw-canvas",
+    })
+  
+    const drawConfig = [
+      {
+        type: 'text',
+        text: '这是基本使用方式, 通常使用配置生成',
+        x: 0,
+        y: 0,
+      },
+    ]
+    
+    eDrawInstance.drawByConfig(drawConfig)
+  })
+
+    
+  return <canvas id="edraw-canvas" />
+}
+```
+

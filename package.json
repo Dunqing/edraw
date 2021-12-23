@@ -1,0 +1,39 @@
+{
+  "name": "@edraw/draw",
+  "version": "0.1.0",
+  "description": "Easy draw poster by canvas",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "docs:start": "pnpm --filter @edraw/docs run start",
+    "docs:build": "pnpm --filter @edraw/docs run build",
+    "release": "bumpp package.json packages/*/package.json --tag --commit --push && pnpm -r publish --access public",
+    "prepare": "husky install .config/husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@antfu/ni": "^0.12.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-angular": "^12.1.4",
+    "@types/node": "^16.11.15",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "bumpp": "^7.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.5.1",
+    "tsup": "^5.11.7",
+    "typescript": "^4.5.4"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
+  }
+}

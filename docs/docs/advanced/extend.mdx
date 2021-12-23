@@ -1,0 +1,38 @@
+---
+sidebar_position: 3
+---
+
+# 实现一个自己的EDraw
+
+:::note
+
+由于EDraw只实现了常用的功能, 可能无法满足你的常用功能. 你可以继承此EDraw, 实现你的feature, 使用你实现的类 
+
+:::
+
+
+```ts
+
+class MyEDraw extends EDraw {
+  constructor(options) {
+    super(options)
+  }
+
+  // 实现一个专门绘制钱的方法
+  drawMoney() {
+    ...
+  }
+
+  // 重写callDrawByType
+  callDrawByType(type, options) {
+
+    if (type === 'money') {
+      // 注意 这里要返回 绘制这个money的x,y, 和所用的宽度,和高度, 服务于group
+      // return { x, y, width, height }
+      return this.drawMoney()
+    }
+    return super.callDrawByType()
+  }
+}
+
+```

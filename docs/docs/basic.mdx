@@ -1,0 +1,107 @@
+---
+sidebar_position: 2
+---
+
+# 通用参数
+
+## EDraw实例参数
+
+```ts
+export interface DrawInstanceOptions {
+  /**
+   * canvas的宽
+   */
+  width: number;
+  /**
+   * canvas的高
+   */
+  height: number;
+  /**
+   * 放大倍数, 多倍图
+   * @default 1
+   */
+  dpr?: number;
+  /**
+   * 通用的字体参数
+   */
+  fontOptions?: StyleOptions;
+
+  /**
+   * canvas元素
+   */
+  el?: HTMLCanvasElement | string | null;
+}
+```
+
+## 布局通用参数
+
+```ts
+export interface LayoutOptions {
+  /**
+   * 距离左边距离
+   */
+  x: number;
+  /**
+   * 距离顶部距离
+   */
+  y: number;
+  /**
+   * 宽度
+   */
+  width?: number;
+  /**
+   * 宽度
+   */
+  height?: number;
+  /**
+   * 内边距
+   * @default 0
+   * all
+   * [horizontal, vertical]
+   * [top, right, bottom, left]
+   */
+  padding?: number | [number, number] | [number, number, number, number];
+  radius?: number | `${number}%`;
+
+  /**
+   * drawText 使用
+   * 是否外层包裹一个Rect
+   * @default false
+   */
+  wrap?: false | Omit<DrawOptions, 'x' | 'y'>;
+  /**
+   * 背景色
+   */
+  backgroundColor?: string;
+
+  /**
+   * 校验，false，则不绘制
+   */
+  if?: boolean | (() => boolean);
+
+  /**
+   *
+   */
+
+  /**
+   * 是否隔离绘制
+   *
+   * @default true
+   * @description
+   * 开始前执行save | 结束后执行restore
+   */
+  isolation?: boolean;
+  /**
+   * 边框线
+   */
+  border?: LayoutBorderOptions;
+}
+
+// 和canvasApi参数一致
+export type LayoutBorderOptions = {
+  color?: string;
+  width?: number;
+  lineDash?: number[];
+  lineDashOffset?: number;
+};
+```

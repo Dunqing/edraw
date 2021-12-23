@@ -1,0 +1,220 @@
+---
+sidebar_position: 1
+---
+
+
+# 分组绘制
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+:::note
+
+配置使用请指定type="group", 函数调用使用drawGroup
+
+::: 
+
+### 支持的参数
+
+```ts
+
+  export interface DrawGroupOptions
+    extends UnionOmit<DrawOptions, 'x' | 'y'>,
+      Partial<Pick<DrawOptions, 'x' | 'y'>> {
+    /**
+    * 一组绘制，可以使用偏移量等绘制
+    * 可以在此设置相同的属性如color, lineHeight, fontSize, fontFamily
+    */
+    type: 'group';
+    columns: DrawGroupColumnsItem[];
+  }
+
+
+  export type DrawGroupColumnsItem = {
+    /**
+    * 偏移X
+    * @default 0
+    */
+    offsetX?: number;
+    /**
+    * 偏移Y
+    * @default 0
+    */
+    offsetY?: number;
+    /**
+    * @default normal
+    */
+    mode?: DrawGroupColumnsMode;
+    /**
+    * 有值时直接使用给定值，不计算x
+    */
+    x?: number;
+    /**
+    * 有值时直接使用给定值，不计算y
+    */
+    y?: number;
+
+  };
+
+```
+
+### 基本用法
+
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 700,
+        height: 200,
+        el: "#edraw-canvas1",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'group',
+          bold: '500',
+          color: '#333',
+          x: 50,
+          y: 50,
+          columns: [
+            {
+              type: 'text',
+              text: '这是第一行文本',
+              fontSize: 12,
+              lineHeight: 17,
+            },
+            {
+              type: 'text',
+              text: '这是第二行文本, 是以上一行的文本的底部偏移20像素的位置绘制的',
+              mode: 'contain-height',
+              offsetY: 20,
+            },
+            {
+              type: 'text',
+              text: '我是第三个配置, 但我在第二行文本的后面',
+              mode: 'contain-width',
+              offsetX: 20
+            }
+          ],
+        },
+      ]
+      
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas1" />
+  }
+```
+
+### 价格联动
+
+> 一般在海报上, 价格是不固定的, 这就会导致宽度不一样, 在这个时候分组绘制就特别有用了
+
+```ts live
+
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 400,
+        height: 200,
+        el: "#edraw-canvas2",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'group',
+          bold: '500',
+          color: '#FE6600',
+          x: 20,
+          y: 20,
+          columns: [
+            {
+              type: 'text',
+              text: '¥',
+              fontSize: 12,
+              lineHeight: 17,
+            },
+            {
+              type: 'text',
+              text: '88888',
+              mode: 'contain-width',
+              offsetY: -6,
+              fontSize: 18,
+              lineHeight: 25,
+              offsetX: 1,
+            },
+            {
+              type: 'text',
+              text: '元/件',
+              mode: 'contain-width',
+              fontSize: 14,
+              offsetX: 2,
+              offsetY: 3,
+              lineHeight: 20,
+            },
+          ],
+        },
+      ]
+      
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas2" />
+  }
+
+
+```
+
+### 圆形头像
+
+```ts live
+
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 500,
+        height: 500,
+        dpr: 1,
+        el: "#edraw-canvas3",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'group',
+          width: 200,
+          height: 200,
+          columns: [
+            {
+              type: 'rect',
+              x: 100,
+              y: 50,
+              radius: '50%',
+              isolation: false,
+              backgroundColor: '#eee'
+            },
+            {
+              type: 'image',
+              width: 200,
+              height: 200,
+              url: 'https://avatars.githubusercontent.com/u/29533304?s=200&v=4',
+            }
+          ],
+        }
+      ]
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas3" />
+  }
+
+```
