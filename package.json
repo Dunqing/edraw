@@ -1,6 +1,6 @@
 {
   "name": "edraw-draw",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Easy draw poster by canvas",
   "scripts": {
     "dev": "pnpm -r --filter ./packages --parallel dev",
