@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/1247748612/edraw/issues"
   },
-  "homepage": "https://github.com/1247748612/edraw#readme",
+  "homepage": "https://edraw.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1247748612/edraw.git"

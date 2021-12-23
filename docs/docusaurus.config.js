@@ -26,7 +26,7 @@ const config = {
           // path: '/',
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/1247748612/edraw/pulls",
+          editUrl: "https://github.com/1247748612/edraw/tree/main/docs",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
