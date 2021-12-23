@@ -11,8 +11,23 @@
     "build": "tsup src/index.ts --format esm,cjs,iife --dts --no-splitting --dts-resolve",
     "prepublishOnly": "nr build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "canvas",
+    "poster",
+    "draw",
+    "easy draw",
+    "config poster",
+    "browser"
+  ],
+  "author": "DengQing <1247748612@qq.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1247748612/edraw/issues"
+  },
+  "homepage": "https://github.com/1247748612/edraw#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1247748612/edraw.git"
+  },
   "dependencies": {}
 }
