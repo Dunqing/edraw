@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "description": "Easy draw poster by canvas",
   "scripts": {
-    "dev": "pnpm -r --parallel dev",
+    "dev": "pnpm -r --filter ./packages --parallel dev",
+    "build": "pnpm -r --filter ./packages build",
     "docs:start": "pnpm --filter edraw-docs run start",
     "docs:build": "pnpm --filter edraw-docs run build",
     "release": "bumpp package.json packages/*/package.json --no-verify --tag --commit --push && pnpm --filter ./packages -r publish --access public",
