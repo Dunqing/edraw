@@ -1,5 +1,5 @@
 {
-  "name": "@edraw/docs",
+  "name": "edraw-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
