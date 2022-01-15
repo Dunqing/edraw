@@ -30,6 +30,6 @@
     "url": "git+https://github.com/1247748612/edraw.git"
   },
   "dependencies": {
-    "edraw-core": "workspace:*"
+    "@edrawjs/core": "workspace:*"
   }
 }

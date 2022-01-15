@@ -72,9 +72,9 @@ importers:
 
   packages/edraw:
     specifiers:
-      'edraw-core': workspace:*
+      '@edrawjs/core': workspace:*
     dependencies:
-      'edraw-core': link:../core
+      '@edrawjs/core': link:../core
 
 packages:
 

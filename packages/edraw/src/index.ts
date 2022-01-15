@@ -1,5 +1,5 @@
-import EDraw from "edraw-core";
+import EDraw from "@edrawjs/core";
 
-export * from "edraw-core";
+export * from "@edrawjs/core";
 
 export default EDraw;

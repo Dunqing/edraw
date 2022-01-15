@@ -1,5 +1,5 @@
 {
-  "name": "edraw-core",
+  "name": "@edrawjs/core",
   "version": "0.2.1",
   "description": "",
   "main": "dist/index.js",
