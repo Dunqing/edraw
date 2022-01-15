@@ -84,8 +84,20 @@ export interface LayoutOptions {
 }
 
 export interface DrawImageOptions extends LayoutOptions {
-  type: 'image';
-  url: string;
+  type: "image";
+  url?: string;
+  /**
+   * 可使用url或image
+   */
+  image?: HTMLImageElement;
+  /**
+   * 图片加载失败时渲染
+   */
+  errorImage?: string | HTMLImageElement;
+  /**
+   * 图片加载失败，重试次数
+   */
+  retryCount: 0;
 }
 ```
 
