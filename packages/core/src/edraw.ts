@@ -300,7 +300,7 @@ export default class EDraw {
     const image =
       options.image instanceof HTMLImageElement
         ? options.image
-        : await getImageElement(options.url!, options).catch((err) => {
+        : await getImageElement(options.url, options).catch((err) => {
             logError(err);
             return null;
           });
