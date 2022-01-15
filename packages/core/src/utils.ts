@@ -46,3 +46,5 @@ export const Omit = <T extends Record<string, any>, F extends keyof T>(
 
   return obj as Omit<T, F>;
 };
+
+export const isNumber = (v: any) => typeof v === "number";

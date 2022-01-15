@@ -1,5 +1,5 @@
-import { getPadding } from "./utils";
-import { getHtmlImageElement } from "./helper";
+import { getPadding, isNumber } from "./utils";
+import { getImageElement, traverseOptionsAddImageElement } from "./helper";
 import {
   defaultOptions,
   fontOptions,
@@ -25,7 +25,7 @@ import type {
   DrawCanvasItem,
 } from "./types";
 
-export default class Draw {
+export default class EDraw {
   context: CanvasRenderingContext2D;
   canvas: HTMLCanvasElement;
 
@@ -88,10 +88,11 @@ export default class Draw {
   }
 
   async drawByConfig(config: DrawCanvasConfig) {
+    await traverseOptionsAddImageElement(config);
+
     for (const item of config) {
       await this.callDrawByType(item.type, item);
     }
-
     return this;
   }
 
@@ -128,8 +129,8 @@ export default class Draw {
         newOptions.y += beforeDrawOptions.height;
       }
 
-      if (x) newOptions.x = x;
-      if (y) newOptions.y = y;
+      if (isNumber(x)) newOptions.x = x;
+      if (isNumber(y)) newOptions.y = y;
 
       return newOptions;
     };
@@ -296,22 +297,22 @@ export default class Draw {
   }
 
   async drawImage(options: Omit<DrawImageOptions, "type">) {
-    const image = await getHtmlImageElement(options.url).catch((err) => {
-      logError(err);
-      return null;
-    });
-
-    if (!image) return;
+    const image =
+      options.image instanceof HTMLImageElement
+        ? options.image
+        : await getImageElement(options.url, options).catch((err) => {
+            logError(err);
+            return null;
+          });
 
     const { x, y, width, height } = this.getOptions(options);
+    const result = { x, y, width, height };
+
+    if (!image) return result;
+
     this.context.drawImage(image, x, y, width, height);
 
-    return {
-      x,
-      y,
-      width,
-      height,
-    };
+    return result;
   }
 
   /**

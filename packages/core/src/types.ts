@@ -154,7 +154,20 @@ export interface DrawOptions extends LayoutOptions, StyleOptions {}
 
 export interface DrawImageOptions extends LayoutOptions {
   type: "image";
-  url: string;
+  url?: string;
+  /**
+   * 可使用url或image
+   */
+  image?: HTMLImageElement;
+  /**
+   * 图片加载失败时渲染
+   */
+  errorImage?: string | HTMLImageElement;
+  /**
+   * 图片加载失败，重试次数
+   * @default 3
+   */
+  retryCount?: number;
 }
 
 export interface DrawTextOptions extends DrawOptions {
