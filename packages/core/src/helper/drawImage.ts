@@ -44,8 +44,8 @@ export const traverseOptionsAddImageElement = async (
 const errorImageCache = new Map();
 
 export const getImageElement = async (
-  imageUrl: string,
-  options: Omit<DrawImageOptions, "type">
+  imageUrl?: string,
+  options: Omit<DrawImageOptions, "type"> = {} as any
 ) => {
   const { retryCount = 3, errorImage } = options;
   const image = new Image();
@@ -88,7 +88,7 @@ export const getImageElement = async (
       await retry().then(resolve).catch(reject);
     };
     image.crossOrigin = "anonymous";
-    image.src = imageUrl;
+    image.src = imageUrl as any;
     document.body.appendChild(image);
   });
 };
