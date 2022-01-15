@@ -165,8 +165,9 @@ export interface DrawImageOptions extends LayoutOptions {
   errorImage?: string | HTMLImageElement;
   /**
    * 图片加载失败，重试次数
+   * @default 3
    */
-  retryCount: 0;
+  retryCount?: number;
 }
 
 export interface DrawTextOptions extends DrawOptions {

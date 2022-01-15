@@ -47,7 +47,7 @@ export const getImageElement = async (
   imageUrl: string,
   options: Omit<DrawImageOptions, "type">
 ) => {
-  const { retryCount, errorImage } = options;
+  const { retryCount = 3, errorImage } = options;
   const image = new Image();
 
   image.style.position = "fixed";
