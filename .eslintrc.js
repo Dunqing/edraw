@@ -3,16 +3,16 @@ module.exports = {
   extends: [
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    "prettier",
   ],
-  plugins: ["import", "@typescript-eslint"],
+  plugins: ["prettier", "import", "@typescript-eslint"],
   rules: {
     "prettier/prettier": [
       "error",
-      {
-        endOfLine: "auto",
-      },
+      { singleQuote: true, semi: false, usePrettierrc: true },
     ],
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
     "import/first": ["error"],
     "import/no-duplicates": ["error", { considerQueryString: true }],
     "import/newline-after-import": ["error", { count: 1 }],
