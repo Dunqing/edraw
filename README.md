@@ -1,6 +1,6 @@
 # EDraw
 
-[查看文档](https://edraw.vercel.app)
+[查看文档](https://edraw.vercel.app) | [查看例子](https://edraw.vercel.app/docs/example/image)
 
 > 配置式绘制海报
 
