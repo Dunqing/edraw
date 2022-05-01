@@ -9,7 +9,12 @@ module.exports = {
   rules: {
     "prettier/prettier": [
       "error",
-      { singleQuote: true, semi: false, usePrettierrc: true },
+      {
+        singleQuote: true,
+        semi: false,
+        usePrettierrc: true,
+        endOfLine: "auto",
+      },
     ],
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
