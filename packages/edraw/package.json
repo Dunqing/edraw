@@ -1,6 +1,6 @@
 {
   "name": "edraw",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Easy draw poster by canvas",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
