@@ -7,9 +7,9 @@
   "types": "dist/index.d.ts",
   "unpkg": "dist/index.global.js",
   "scripts": {
-    "dev": "nr build --watch ../core",
+    "dev": "pnpm build --watch ../core",
     "build": "tsup src/index.ts --format esm,cjs,iife --dts --no-splitting --clean --dts-resolve",
-    "prepublishOnly": "nr build"
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [
     "canvas",
