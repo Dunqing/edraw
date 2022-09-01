@@ -82,6 +82,7 @@ export const getImageElement = async (
   return new Promise<HTMLImageElement>((resolve, reject) => {
     image.onload = () => {
       resolve(image)
+      document.body.removeChild(image)
     }
     image.onerror = async () => {
       document.body.removeChild(image)
