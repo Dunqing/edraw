@@ -1,18 +1,18 @@
-import { createCanvasElement } from "./createCanvas";
+import { createCanvasElement } from './createCanvas'
 
 export function getCanvasByElement(
   el?: HTMLCanvasElement | string | null
 ): HTMLCanvasElement {
   if (el instanceof HTMLCanvasElement) {
-    return el;
+    return el
   }
-  if (!el) return createCanvasElement();
+  if (!el) return createCanvasElement()
 
-  const canvas = document.querySelector(el);
+  const canvas = document.querySelector(el)
 
   if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-    return createCanvasElement();
+    return createCanvasElement()
   }
 
-  return canvas;
+  return canvas
 }

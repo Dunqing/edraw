@@ -1,2 +1,2 @@
-export * from "./drawImage";
-export * from "./createCanvas";
+export * from './drawImage'
+export * from './createCanvas'
