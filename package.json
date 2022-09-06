@@ -2,6 +2,7 @@
   "name": "@edrawjs/draw",
   "version": "0.4.1",
   "description": "Easy draw poster by canvas",
+  "packageManager": "pnpm@7.11.0",
   "scripts": {
     "dev": "pnpm -r --filter '{packages/*}' --parallel dev",
     "build": "pnpm -r --filter '{packages/*}' build",
