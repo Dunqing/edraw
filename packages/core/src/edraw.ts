@@ -296,7 +296,9 @@ export default class EDraw {
     }, true)
   }
 
-  async drawImage(options: Omit<DrawImageOptions, 'type'>) {
+  async drawImage(_options: Omit<DrawImageOptions, 'type'>) {
+    const options = this.getOptions(_options)
+
     const image =
       options.image instanceof HTMLImageElement
         ? options.image
@@ -305,14 +307,21 @@ export default class EDraw {
             return null
           })
 
-    const { x, y, width, height } = this.getOptions(options)
-    const result = { x, y, width, height }
+    return this.callDraw(() => {
+      const { x, y, width, height } = options
+      const result = { x, y, width, height }
 
-    if (!image) return result
+      if (!image) return result
 
-    this.context.drawImage(image, x, y, width, height)
+      if (options.radius) {
+        this.roundPath(options as DrawRoundOptions)
+        this.context.clip()
+      }
 
-    return result
+      this.context.drawImage(image, x, y, width, height)
+
+      return options
+    }, options.isolation)
   }
 
   /**

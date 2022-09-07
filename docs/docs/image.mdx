@@ -169,6 +169,78 @@ export interface DrawImageOptions extends LayoutOptions {
   </TabItem>
 </Tabs>
 
+### 绘制圆角图片
+
+<Tabs>
+<TabItem value="options" label="配置式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 192*4,
+        height: 108*4,
+        dpr: 1,
+        el: "#edraw-canvas3",
+      })
+    
+      const drawConfig = [
+        {
+          type: 'image',
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+          radius: 8
+        }
+      ]
+      eDrawInstance.drawByConfig(drawConfig)
+    })
+
+      
+    return <canvas id="edraw-canvas3" />
+  }
+```
+
+</TabItem>
+
+<TabItem value="function" label="函数式">
+
+```typescript live
+  function () {
+
+    setTimeout(() => {
+
+      const eDrawInstance = new EDraw({
+        width: 192*4,
+        height: 108*4,
+        el: "#edraw-canvas3-2",
+      })
+    
+
+      const imageOptions = {
+          type: 'image',
+          x: 0,
+          y: 0,
+          url: 'http://h2.ioliu.cn/bing/WinterRoofs_ZH-CN5091303265_1920x1080.jpg?imageslim',
+          width: 192 * 2,
+          height: 108 * 2,
+          radius: 8
+        }
+      
+      eDrawInstance.drawImage(imageOptions)
+    })
+
+    return <canvas id="edraw-canvas3-2" />
+  }
+```
+
+</TabItem>
+</Tabs>
+
 
 
 
@@ -259,3 +331,4 @@ export interface DrawImageOptions extends LayoutOptions {
 
 </TabItem>
 </Tabs>
+
